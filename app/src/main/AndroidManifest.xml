@@ -35,6 +35,8 @@
                     android:scheme="app" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".presentation.DetailActivity" />
     </application>
 
 </manifest>
