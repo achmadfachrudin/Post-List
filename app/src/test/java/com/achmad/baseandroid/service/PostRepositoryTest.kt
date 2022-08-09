@@ -14,8 +14,8 @@ open class PostRepositoryTest {
     )
 
     protected val entity = PostItemEntity(
-        id = 123,
-        userId = 1234,
+        id = 111,
+        userId = 1,
         title = "title",
         body = "body"
     )

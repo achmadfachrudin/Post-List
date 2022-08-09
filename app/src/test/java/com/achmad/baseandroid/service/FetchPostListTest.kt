@@ -11,7 +11,7 @@ import org.junit.Assert
 import org.junit.Test
 import retrofit2.Response
 
-class FetchPostListTest : PostRepositoryTest() {
+internal class FetchPostListTest : PostRepositoryTest() {
 
     @Test
     fun `fetchPostlist success should return posts`() {
@@ -29,6 +29,25 @@ class FetchPostListTest : PostRepositoryTest() {
 
         Assert.assertEquals(ApiResult.Success(result).status, actual.status)
         Assert.assertEquals(3, actual.data?.size)
+    }
+
+    @Test
+    fun `fetchPostlist success with filter should return posts filtered`() {
+        val result = listOf(
+            entity,
+            entity.copy(title = "title2"),
+            entity.copy(title = "title3"),
+            entity.copy(title = "title20")
+        )
+
+        coEvery {
+            remote.fetchPostList()
+        } returns ApiResponse.Success(Response.success(result))
+
+        val actual = runBlocking { repository.fetchPostList("e2").last() }
+
+        Assert.assertEquals(ApiResult.Success(result).status, actual.status)
+        Assert.assertEquals(2, actual.data?.size)
     }
 
     @Test
