@@ -17,13 +17,13 @@ class MainViewModel @Inject constructor(
     private val postRepository: PostRepository
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow<ApiResult<List<PostItem>>>(ApiResult.Loading)
-    val uiState: StateFlow<ApiResult<List<PostItem>>> = _uiState
+    val uiMutableState = MutableStateFlow<ApiResult<List<PostItem>>>(ApiResult.Loading)
+    val uiState: StateFlow<ApiResult<List<PostItem>>> = uiMutableState
 
     fun fetchPostList(filter: String = "") {
         viewModelScope.launch {
             postRepository.fetchPostList(filter).collectLatest {
-                _uiState.value = it
+                uiMutableState.value = it
             }
         }
     }
