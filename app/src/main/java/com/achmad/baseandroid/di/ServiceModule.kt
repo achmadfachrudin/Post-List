@@ -22,14 +22,14 @@ object ServiceModule {
 
     @Provides
     @Singleton
-    fun providePostRemote(pokedexService: PostService): PostRemote {
-        return PostRemote(pokedexService)
+    fun providePostRemote(service: PostService): PostRemote {
+        return PostRemote(service)
     }
 
     @Provides
     fun providePostRepository(
-        postRemote: PostRemote
+        remote: PostRemote,
     ): PostRepository {
-        return PostRepository(postRemote)
+        return PostRepository(remote)
     }
 }

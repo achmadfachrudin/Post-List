@@ -27,15 +27,18 @@ object NetworkModule {
             Log.d("API log", message)
         }.apply {
             level =
-                if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY
-                else HttpLoggingInterceptor.Level.NONE
+                if (BuildConfig.DEBUG) {
+                    HttpLoggingInterceptor.Level.BODY
+                } else {
+                    HttpLoggingInterceptor.Level.NONE
+                }
         }
     }
 
     @Provides
     fun provideOkHttpClient(
         httpLoggingInterceptor: Interceptor,
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
@@ -48,7 +51,7 @@ object NetworkModule {
 
     @Provides
     fun provideRetrofit(
-        okHttpClient: OkHttpClient
+        okHttpClient: OkHttpClient,
     ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
