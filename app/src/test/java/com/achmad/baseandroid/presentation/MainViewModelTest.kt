@@ -1,6 +1,6 @@
 package com.achmad.baseandroid.presentation
 
-import com.achmad.baseandroid.service.PostRepository
+import com.achmad.baseandroid.service.data.AppRepository
 import com.achmad.common.ApiResult
 import com.achmad.feature.post.data.model.PostItem
 import io.mockk.clearAllMocks
@@ -19,7 +19,7 @@ import org.junit.Test
 @OptIn(ExperimentalCoroutinesApi::class)
 internal class MainViewModelTest {
 
-    private val repository = mockk<PostRepository>()
+    private val repository = mockk<AppRepository>()
 
     private val viewModel = MainViewModel(
         repository

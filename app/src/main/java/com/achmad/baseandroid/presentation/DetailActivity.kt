@@ -5,8 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import com.achmad.baseandroid.service.data.model.PostItem
 import com.achmad.baseandroid.theme.BaseComposeTheme
-import com.achmad.feature.post.data.model.PostItem
 
 class DetailActivity : AppCompatActivity() {
 
@@ -33,7 +33,10 @@ class DetailActivity : AppCompatActivity() {
         setContent {
             BaseComposeTheme {
                 post?.let {
-                    PostDetail(it)
+                    DetailScreen(
+                        model = it,
+                        onLeftButtonClick = { onBackPressed() }
+                    )
                 }
             }
         }

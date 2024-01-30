@@ -2,6 +2,7 @@ package com.achmad.baseandroid.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.achmad.baseandroid.cache.PreferenceManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,8 +15,7 @@ import javax.inject.Singleton
 object CacheModule {
 
     @Provides
-    @Singleton
     fun provideSharedPreference(@ApplicationContext context: Context): SharedPreferences {
-        return context.getSharedPreferences("preferences_name", Context.MODE_PRIVATE)
+        return context.getSharedPreferences(PreferenceManager.NAME, PreferenceManager.MODE)
     }
 }

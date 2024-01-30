@@ -3,15 +3,18 @@ https://jsonplaceholder.typicode.com
 
 ## Tech stack
 - Project
+  * Android Studio Giraffe | 2022.3.1
+  * AGP 8.1.1
+  * Gradle 8.5
+  * Kotlin 1.9.22
   * Minimum SDK level 21
-  * AGP 7.2.1
-  * Gradle 7.5
 - Architechture
   * MVVM
   * Repository pattern
 - Jetpack
   * Hilt
   * Compose
+  * Room
 - [Retrofit2 & OkHttp3](https://github.com/square/retrofit) - Construct the REST APIs.
 - [Chucker](https://github.com/ChuckerTeam/chucker) - HTTP inspector
 - [Sandwich](https://github.com/skydoves/Sandwich) - Construct a lightweight and modern response interface to handle network payload for Android.

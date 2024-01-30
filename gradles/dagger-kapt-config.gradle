@@ -1,5 +1,0 @@
-kapt {
-    javacOptions {
-        option("-Adagger.validateTransitiveComponentDependencies=DISABLED")
-    }
-}

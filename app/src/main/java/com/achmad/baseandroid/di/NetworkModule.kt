@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.achmad.baseandroid.BuildConfig
 import com.chuckerteam.chucker.api.ChuckerInterceptor
-import com.skydoves.sandwich.coroutines.CoroutinesResponseCallAdapterFactory
+import com.skydoves.sandwich.adapters.ApiResponseCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,7 +24,7 @@ object NetworkModule {
     @Provides
     fun provideHttpLoggingInterceptor(): Interceptor {
         return HttpLoggingInterceptor { message ->
-            Log.d("API log", message)
+            Log.d("API_LOG", message)
         }.apply {
             level =
                 if (BuildConfig.DEBUG) {
@@ -57,7 +57,7 @@ object NetworkModule {
             .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create())
-            .addCallAdapterFactory(CoroutinesResponseCallAdapterFactory.create())
+            .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
             .build()
     }
 }

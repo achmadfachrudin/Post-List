@@ -1,6 +1,0 @@
-kapt {
-    arguments {
-        arg("enableParallelEpoxyProcessing", "false")
-        arg("logEpoxyTimings", "true")
-    }
-}

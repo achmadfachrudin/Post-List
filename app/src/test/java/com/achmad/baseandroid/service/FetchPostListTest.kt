@@ -1,7 +1,7 @@
 package com.achmad.baseandroid.service
 
-import com.achmad.common.ApiResult
-import com.achmad.feature.post.data.entity.PostItemEntity
+import com.achmad.baseandroid.core.network.ApiResult
+import com.achmad.baseandroid.service.data.entity.PostItemEntity
 import com.skydoves.sandwich.ApiResponse
 import io.mockk.coEvery
 import kotlinx.coroutines.flow.last
@@ -11,7 +11,7 @@ import org.junit.Assert
 import org.junit.Test
 import retrofit2.Response
 
-internal class FetchPostListTest : PostRepositoryTest() {
+internal class FetchPostListTest : AppRepositoryTest() {
 
     @Test
     fun `fetchPostlist success should return posts`() {

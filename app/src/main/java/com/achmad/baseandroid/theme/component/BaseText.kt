@@ -4,9 +4,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -14,7 +13,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -23,17 +21,16 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import com.achmad.baseandroid.theme.BaseColor
+import com.achmad.baseandroid.theme.BaseTextStyle
 
 @Composable
 fun BaseText(
     text: String,
     modifier: Modifier = Modifier,
-    horizontalArrangement: Arrangement.Horizontal = Arrangement.Center,
     color: Color = BaseColor.Black,
     fontSize: TextUnit = TextUnit.Unspecified,
     fontStyle: FontStyle? = null,
     fontWeight: FontWeight? = null,
-    fontFamily: FontFamily? = null,
     letterSpacing: TextUnit = TextUnit.Unspecified,
     textDecoration: TextDecoration? = null,
     textAlign: TextAlign? = null,
@@ -42,7 +39,8 @@ fun BaseText(
     softWrap: Boolean = true,
     maxLines: Int = Int.MAX_VALUE,
     onTextLayout: (TextLayoutResult) -> Unit = {},
-    style: TextStyle = MaterialTheme.typography.body2,
+    style: TextStyle = BaseTextStyle.regular14,
+    horizontalArrangement: Arrangement.Horizontal = Arrangement.Center,
     drawableStart: Painter? = null,
     drawableEnd: Painter? = null,
     drawableStartSize: Int = 24,
@@ -59,14 +57,15 @@ fun BaseText(
     ) {
         drawableStart?.let {
             Icon(
-                modifier = Modifier
-                    .size(drawableStartSize.dp)
-                    .padding(
-                        top = 0.dp,
-                        bottom = 0.dp,
-                        start = 0.dp,
-                        end = drawableStartPadding.dp,
-                    ),
+                modifier =
+                    Modifier
+                        .size(drawableStartSize.dp)
+                        .padding(
+                            top = 0.dp,
+                            bottom = 0.dp,
+                            start = 0.dp,
+                            end = drawableStartPadding.dp,
+                        ),
                 painter = drawableStart,
                 tint = drawableStartColor ?: color,
                 contentDescription = "",
@@ -79,7 +78,6 @@ fun BaseText(
             fontSize = fontSize,
             fontStyle = fontStyle,
             fontWeight = fontWeight,
-            fontFamily = fontFamily,
             letterSpacing = letterSpacing,
             textDecoration = textDecoration,
             textAlign = textAlign,
@@ -93,14 +91,15 @@ fun BaseText(
 
         drawableEnd?.let {
             Icon(
-                modifier = Modifier
-                    .size(drawableEndSize.dp)
-                    .padding(
-                        top = 0.dp,
-                        bottom = 0.dp,
-                        start = drawableEndPadding.dp,
-                        end = 0.dp,
-                    ),
+                modifier =
+                    Modifier
+                        .size(drawableEndSize.dp)
+                        .padding(
+                            top = 0.dp,
+                            bottom = 0.dp,
+                            start = drawableEndPadding.dp,
+                            end = 0.dp,
+                        ),
                 painter = drawableEnd,
                 tint = drawableEndColor ?: color,
                 contentDescription = "",
